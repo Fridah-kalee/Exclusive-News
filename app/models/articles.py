@@ -1,4 +1,4 @@
-class Articles:
+class Article:
     '''
     Articles class to define articles objects
     '''
@@ -11,3 +11,12 @@ class Articles:
         self.urlToImage= urlToImage
         self.publishedAt = publishedAt
         self.content = content
+
+        pass
+
+class Source:
+    def __init__(self,id,name):
+        self.id=id
+        self.name=name
+
+        pass    

@@ -1,0 +1,9 @@
+<body>
+    <!-- Trending articles section  -->
+    <h3> Trending Articles</h3>
+     <ul>
+        {% for trending_article in trending %}
+            <li>{{ trending_article.title}}</li>
+        {% endfor %}
+    </ul>
+</body>
