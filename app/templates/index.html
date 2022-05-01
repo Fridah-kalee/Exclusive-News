@@ -1,9 +1,25 @@
 <body>
-    <!-- Trending articles section  -->
-    <h3> Trending Articles</h3>
+    <!-- entertainment articles section  -->
+    <h3> Entertainment Articles</h3>
      <ul>
-        {% for trending_article in trending %}
-            <li>{{ trending_article.title}}</li>
+        {% for entertainment_article in entertainment %}
+            <li>{{ entertainment_article.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- business articles section  -->
+    <h3> Business Articles</h3>
+     <ul>
+        {% for business_article in business %}
+            <li>{{ business_article.title}}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- health articles section  -->
+    <h3> Health Articles</h3>
+     <ul>
+        {% for health_article in health %}
+            <li>{{ health_article.title}}</li>
         {% endfor %}
     </ul>
 </body>

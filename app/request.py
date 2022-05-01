@@ -2,19 +2,16 @@ from app import app
 import urllib.request,json
 from .models import articles
 
-Article=articles.Article
+Article = articles.Article
 
-api_key =None
-base_url =None
+# api_key =None
+# base_url =None
 
 #Getting api key
 api_key = app.config['NEWS_API_KEY']
 
 #Getting news base url
 base_url= app.config['NEWS_API_BASE_URL']
-
-
-
 
 def get_articles(category):
     '''
@@ -29,10 +26,10 @@ def get_articles(category):
         article_results = None
 
         if get_articles_response['articles']:
-            articles_results_list =get_articles_response['articles']
+            article_results_list =get_articles_response['articles']
             article_results = process_results(article_results_list)
 
-            return article_results
+    return article_results
 
 def get_article_everything(query):
     get_articles_url = 'https://newsapi.org/v2/everything?q={}&from=2022-04-30&language=en&sortBy=publishedAt&apiKey={}'.format(query,api_key)
@@ -51,7 +48,7 @@ def get_article_everything(query):
 
 #processing results
 def process_results(article_list):
-    articles_results = []
+    article_result = []
     for article_item in article_list:
         source = article_item.get("source")
         author = article_item.get("author")
@@ -63,7 +60,7 @@ def process_results(article_list):
         content = article_item.get("content")
 
         if content:
-            article_object = Article(source, author, title, description, url, urlToImage, publishedAt,content)
-            articles_results.append(article_object)
+            articles_object = Article(source, author, description, title, url, urlToImage, publishedAt,content)
+            article_result.append(articles_object)
 
-        return articles_results            
+    return article_result            
