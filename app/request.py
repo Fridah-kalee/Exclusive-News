@@ -32,7 +32,7 @@ def get_articles(category):
     return article_results
 
 def get_article(name):
-    get_article_url = base_url.format(query,api_key)
+    get_article_url = base_url.format(name,api_key)
     with urllib.request.urlopen(get_article_outcome_url) as url:
         article_outcome_data = url.read()
         article_outcome_response = json.loads(article_output_data)
@@ -70,4 +70,19 @@ def process_results(article_list):
             articles_object = Article(source, author, description, title, url, urlToImage, publishedAt,content)
             article_result.append(articles_object)
 
-    return article_result            
+    return article_result
+
+def search_article(article_name):
+    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(api_key,article_name)
+    with urllib.request.urlopen(search_article_url) as url:
+        search_article_data = url.read()
+        search_article_response = json.loads(search_article_data)
+
+        search_article_results = None
+
+        if search_article_response['results']:
+            search_article_list = search_article_response['results']
+            search_article_results = process_results(search_article_list)
+
+
+    return search_article_results                
