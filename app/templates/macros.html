@@ -1,7 +1,7 @@
 {% macro displayArticleList(article_list) %}
 
     {% for article in article_list %}
-    <div class="container p-3 w-100">
+    <div class="container p-3 w-100" style="overflow-x: hidden;">
         <div class="col p-3">
             <div class="card p-3">
                 <img src="{{article.urlToImage}}" alt="" />
@@ -15,7 +15,7 @@
                         class="card-text text-center text-decoration-none">
                         <!--<button type="button" class="btn btn-info">Go to article</button>-->
                         <div class="d-grid gap-2 col-6 mx-auto">
-                            <button class="btn btn-outline-info btn-lg" type="button">Go to article</button>
+                            <button class="btn btn-outline-info btn-lg" style="margin-bottom: 5%;" type="button">Go to article</button>
                         </div>
                     </a>
                 </div>

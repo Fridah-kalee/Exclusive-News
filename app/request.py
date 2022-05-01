@@ -73,15 +73,15 @@ def process_results(article_list):
     return article_result
 
 def search_article(article_name):
-    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(api_key,article_name)
+    search_article_url = 'https://api.thearticledb.org/3/search/article?api_key={}&query={}'.format(api_key,article_name)
     with urllib.request.urlopen(search_article_url) as url:
         search_article_data = url.read()
         search_article_response = json.loads(search_article_data)
 
         search_article_results = None
 
-        if search_article_response['results']:
-            search_article_list = search_article_response['results']
+        if search_article_response['articles']:
+            search_article_list = search_article_response['articles']
             search_article_results = process_results(search_article_list)
 
 
