@@ -32,7 +32,10 @@ To get the code.
    * pip install flask
 7. Create folders and files
 8. Initialize the application
-9.          
+9. Then start building your application
+10. Running application
+    * python3.9 run.py
+11. Navigate to http://127.0.0.1:5000/ or whatever is mentioned in the terminal as the development server              
 ## Technology Used
 * python3.9
 * Flask
