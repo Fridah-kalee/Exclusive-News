@@ -31,20 +31,27 @@ def get_articles(category):
 
     return article_results
 
-def get_article_everything(query):
-    get_articles_url = 'https://newsapi.org/v2/everything?q={}&from=2022-04-30&language=en&sortBy=publishedAt&apiKey={}'.format(query,api_key)
-    with urllib.request.urlopen(get_articles_url) as url:
-        get_articles_data = url.read()
-        get_articles_response = json.loads(get_articles_data)
+def get_article(name):
+    get_article_url = base_url.format(query,api_key)
+    with urllib.request.urlopen(get_article_outcome_url) as url:
+        article_outcome_data = url.read()
+        article_outcome_response = json.loads(article_output_data)
 
-        articles_results = None
+        article_object = None
 
-        if get_articles_response['articles']:
-            articles_results_list = get_articles_response['articles']
-            articles_results = process_results(articles_results_list)
+        if article_outcome_response:
+            source = article_outcome_response("source")
+            author = article_outcome_response("author")
+            description = article_outcome_response("description")
+            title = article_outcome_response("title")
+            url = article_outcome_response("url")
+            urlToImage = article_outcome_response("urlToImage")
+            publishedAt = article_outcome_response("publishedAt")
+            content = article_outcome_response("content")
 
-    return articles_results
+            article_object =Article(source, author, description, title, url, urlToImage, publishedAt,content)
 
+    return article_object
 
 #processing results
 def process_results(article_list):
