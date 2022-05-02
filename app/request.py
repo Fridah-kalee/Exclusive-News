@@ -15,7 +15,7 @@ def get_articles(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url='https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey={}'.format(category,api_key)
+    get_articles_url= base_url.format(category,api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
