@@ -33,9 +33,13 @@ To get the code.
 7. Create folders and files
 8. Initialize the application
 9. Then start building your application
-10. Running application
-    * python3.9 run.py
-11. Navigate to http://127.0.0.1:5000/ or whatever is mentioned in the terminal as the development server              
+10. Exporting Configurations
+    * export API_KEY='{Enter your News Api Key}'
+11. Running the application
+    * python3.9 manage.py server
+12. Testing the application
+    * python3.9 manage.py test
+11. Navigate to http://127.0.0.1:5000/ or whatever is mentioned in the terminal as the development server to open the application             
 ## Technology Used
 * python3.9
 * Flask

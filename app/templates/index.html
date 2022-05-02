@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% import 'macros.html' as macro%}
+<!-- Styles block -->
 
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 {% block content %}
 <div class="container">
     <form>
@@ -9,6 +14,7 @@
     </form>
 
 </div>
+
     <!-- entertainment articles section  -->
     <h3 style="text-align: center;"> <b>Entertainment Articles</b></h3>
      <ul>
