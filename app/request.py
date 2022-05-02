@@ -1,23 +1,21 @@
-from app import app
+# from app import app
 import urllib.request,json
-from .models import articles
+from .models import Article,Source
 
-Article = articles.Article
+api_key =None
+base_url =None
 
-# api_key =None
-# base_url =None
-
-# def configure_request(app):
-#     global api_key,base_url
-api_key = app.config['NEWS_API_KEY']
-base_url= app.config['NEWS_API_BASE_URL']
+def configure_request(app):
+    global api_key,base_url
+    api_key = app.config['NEWS_API_KEY']
+    base_url= app.config['NEWS_API_BASE_URL']
     
 
 def get_articles(category):
     '''
     Function that gets the json response to our url request
     '''
-    get_articles_url = base_url.format(category,api_key)
+    get_articles_url='https://newsapi.org/v2/top-headlines?country=us&category={}&apiKey={}'.format(category,api_key)
 
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
@@ -73,15 +71,15 @@ def process_results(article_list):
     return article_result
 
 def search_article(article_name):
-    search_article_url = 'https://api.thearticledb.org/3/search/article?api_key={}&query={}'.format(api_key,article_name)
+    search_article_url = 'https://newsapi.org/v2/everything?q={}&apiKey={}'.format(api_key,article_name)
     with urllib.request.urlopen(search_article_url) as url:
         search_article_data = url.read()
         search_article_response = json.loads(search_article_data)
 
         search_article_results = None
 
-        if search_article_response['articles']:
-            search_article_list = search_article_response['articles']
+        if search_article_response['results']:
+            search_article_list = search_article_response['results']
             search_article_results = process_results(search_article_list)
 
 

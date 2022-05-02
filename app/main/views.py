@@ -1,10 +1,10 @@
 from flask import render_template,request,redirect,url_for
-from app import app
-from .request import get_articles,get_article,search_article
+from .import main
+from app.request import get_articles,get_article,search_article
  
 
 #views
-@app.route('/')#localhost:5000/
+@main.route('/')#localhost:5000/
 def index():
     '''
     View root page function that returns the front page and its data
@@ -20,12 +20,12 @@ def index():
     else:
         return render_template('index.html',entertainment = entertainment_articles, business =business_articles, health = health_articles)
 
-@app.route('/article/<name>')
+@main.route('/article/<name>')
 def article(name):
     article = get_article(name)
     return render_template(article.html,article=article)
 
-@app.route('/search/<article_name>')
+@main.route('/search/<article_name>')
 def search(article_name):
     '''
     View function to display the search results
